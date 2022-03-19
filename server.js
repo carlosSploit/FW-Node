@@ -5,6 +5,7 @@ const mysqlconnet = require('express-myconnection')
 const ejs = require('ejs');
 const path = require('path')
 const verifyToken = require('./config/tockenizer/tokenizer')
+const cors = require("cors")
 /// rotas de app ---------------------------------
 const tokeniser = require('./config/tockenizer/router/routertoken')
 const generico = require('./routes/generic')
@@ -24,7 +25,7 @@ app.set('view engine', 'ejs');
 // si se desea utilizar mysql desabilita esto
 //app.use(mysqlconnet(mysql, dbopccion, 'single'))
 app.use(express.json())
-//app.use()
+app.use(cors())
 
 //rootas -----------------------------------------------------------------------
 //**** roota principal o gemerica *****/

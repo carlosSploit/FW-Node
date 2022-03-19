@@ -30,3 +30,16 @@ module.exports = class dbconeccion{
 //         })
 //     }
 // }
+// METODO DE CONSULTA ASINCRONA
+// El metodo asincrono permite votar la respuesta, evitando que se envie un mensaje dentro de esta
+// async leer(req,res){
+//     let conet = conexibd.connection(req,res)
+//     // verifica si hay conexion si no la hay manda el error
+//     if(conet != null){
+//         let results = await new Promise((resol, reject) => conet.query('SELECT * FROM `participante` WHERE `id_negocio` = ?',[req.params.id], (err, rows) => {
+//             if (err) reject(err);
+//             resol(rows);
+//         }));
+//         return results;
+//     }
+// }
