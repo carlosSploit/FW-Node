@@ -7,7 +7,7 @@ module.exports = function verifyToken(req,res,next){
     if(!req.headers.authorization){
       return res.status(403).send({message: 'No tienes autorizacion'})
     }
- 
+    
     const tokenext =  req.headers['authorization']
     
     if (typeof tokenext !== 'undefined'){

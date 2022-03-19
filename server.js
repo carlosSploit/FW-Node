@@ -5,6 +5,7 @@ const mysqlconnet = require('express-myconnection')
 const ejs = require('ejs');
 const path = require('path')
 const verifyToken = require('./config/tockenizer/tokenizer')
+const morgan = require('morgan')
 const cors = require("cors")
 /// rotas de app ---------------------------------
 const tokeniser = require('./config/tockenizer/router/routertoken')
@@ -18,14 +19,13 @@ const app = express()
 //const dbopccion = config.bd.mysql
 
 app.set('port', process.env.PORT || config.apires.portpru)
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 //mydellwares ------------------------------------------------------------------
 // si se desea utilizar mysql desabilita esto
 //app.use(mysqlconnet(mysql, dbopccion, 'single'))
 app.use(express.json())
-app.use(cors())
+app.use(morgan("dev"))
+app.use(cors(config.apires.control_access.host))
 
 //rootas -----------------------------------------------------------------------
 //**** roota principal o gemerica *****/

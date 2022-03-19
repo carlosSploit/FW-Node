@@ -8,9 +8,16 @@
             "database": "bdecomers"
         }
     },
+
     "apires":{
         "portpru" : 5000,
-        "hosturl" : "localhost"
+        "hosturl" : "localhost",
+        "control_access":{
+            "host": ["*"],
+            "peticcioes": "GET, POST, PUT, DELETE",
+            "hedders": "X-Requested-With,content-type",
+            "credencial": true
+        }
     },
     "apidatkey":{
         "id": 969280255,
