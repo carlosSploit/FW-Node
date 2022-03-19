@@ -3,7 +3,7 @@ const rooutes = express.Router()
 //######################### rooutes ###################################
 //listar
 rooutes.get('/', (req, res) => {
-    res.send("La ruta esta funcionando correctamente")
+    res.send({"messege":"La ruta esta funcionando correctamente"})
 })
 
 module.exports = rooutes
