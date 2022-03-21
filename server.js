@@ -7,6 +7,7 @@ const path = require('path')
 const verifyToken = require('./config/tockenizer/tokenizer')
 const morgan = require('morgan')
 const cors = require("cors")
+
 /// rotas de app ---------------------------------
 const tokeniser = require('./config/tockenizer/router/routertoken')
 const generico = require('./routes/generic')
