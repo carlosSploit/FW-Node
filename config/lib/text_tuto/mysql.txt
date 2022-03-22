@@ -1,0 +1,36 @@
+// METODOS DE CONSULTA
+// tendremos que pasar el request y el respons de la peticion de 
+// la ruta de express.
+//
+// leer(req,res){
+//     # llamamos a la conexion y la almacenamos en una variable
+//     # para darle uso en la peticion del query
+//     let conet = conexibd.connection(req,res) 
+//     // verifica si hay conexion si no la hay manda el error
+//     if(conet != null){
+//         conet.query('CALL `read_user`(?)',[req.params.id], (err, rows) => {
+//             if (err) return res.send(err)
+//             res.json(rows[0])
+//         })
+//     }
+// }
+
+METODO DE CONSULTA ASINCRONA
+El metodo asincrono permite votar la respuesta, evitando que se envie un mensaje dentro de esta
+async leer(req,res){
+    let conet = await objconnet.connection(req,res)
+    if(conet == null) return res.send({"error": "error de conexion"})
+    let results = await new Promise((resol, reject) => conet.query('SELECT * FROM `participante` WHERE 1', (err, rows) => {
+        if (err) reject(err);
+        resol(rows);
+    }));
+    return res.send(results);
+}
+
+# Usar mysql en squeleton
+Para poder dar uso al squeleton con mysql, se tendra que descomentar las siguientes lineas de codigo en la configuracion de
+my sql
+
+
+# Creacion de consultas
+Para poder crear una consulta en este squeleton, aremos uso de la clases Connet_mysql.js el cual ya presenta la 
