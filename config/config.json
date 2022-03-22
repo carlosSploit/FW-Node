@@ -1,11 +1,26 @@
 {
     "bd":{
+        "mongo":{
+            "host":"localhost",
+            "bd":"notes-app"
+        },
         "mysql":{
-            "host": "localhost",
-            "port": 3306,
-            "user": "root",
-            "password": "",
-            "database": "bdecomers"
+            "tipeOption":"pool",
+            "single": {
+                "host": "localhost",
+                "port": 3306,
+                "user": "root",
+                "password": "",
+                "database": "bdnoticias"
+            },
+            "pool": {
+                "connectionLimit" : 10,
+                "host": "localhost",
+                "port": 3306,
+                "user": "root",
+                "password": "",
+                "database": "bdnoticias"
+              }
         }
     },
 

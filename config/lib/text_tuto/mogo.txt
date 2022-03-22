@@ -20,7 +20,9 @@ const Noteschema = new Schema({
         require: true
     }
 },{// decirle que cada ves que se actualize, tenga algo temporal
-    timestamps: true
+    timestamps: true,
+    // eliminar las verciones de key
+    versionkey:false
 })
 
 const modeelo = model('node', Noteschema)
@@ -56,5 +58,52 @@ module.exports = class bdmodel{
         console.log(result)
     }
 
+    actualizar = async(id) => {
+        const result = await persona.updateOne({_id: id},{
+            $set:{
+                title: "comeme la pila",
+                description: "agustisimo que me la como"
+            }
+        })
+        return result
+    }
+
+    eliminar = async(id) => {
+        const result = await persona.deleteOne({_id: id})
+        return result
+    }
+
 }
+'''
+
+Tener en cuenta que en mongo se realizan las siguientes operaciones, considernado la estructura
+del Schema antes creado:
+
+'''
+modeelo.find() : lista todos los objetos relacionados con el Schema como
+                 una lista de productos
+
+persona.save() : añade los datos a la base, considerando la extructura del esquema,
+                 como se ve reflejado en lo siguiente -
+                 ---------
+                 modeelo(
+                    {
+                        title: "comeme la pila",
+                        description: "agustisimo que me la como" 
+                    }
+                )
+                ----------
+                Donde el Schema llamado Modeelo tiene un title y una descripcionm
+                considerando que estos dos son obligatorios de llenar
+
+persona.updateOne({_id: id}) : Actualiza los datos en llenar, teniendo en cuenta los
+                               el Schema antes mencionado. Por otro lado hay que
+                               considerar que este metodo tambien presenta otros datos
+                               como seria los a actualizar, que se incluirian al costado
+                               del {_id:id} un json o un mapa donde estaran dichos datos.
+                               Tener en cuenta que la actualizacion tendra que estar dentro
+                               de la tupla $set: para que pueda reconocerlo el metodo.
+
+persona.deleteOne({_id: id}) : Ayuda a eliminar un dato del Schema teniendo en cuenta el id
+                               del objeto antes creado.
 '''

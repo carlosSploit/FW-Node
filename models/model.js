@@ -20,4 +20,19 @@ module.exports = class bdmodel{
         return result
     }
 
+    actualizar = async(id) => {
+        const result = await persona.updateOne({_id: id},{
+            $set:{
+                title: "comeme la pila",
+                description: "agustisimo que me la como"
+            }
+        })
+        return result
+    }
+
+    eliminar = async(id) => {
+        const result = await persona.deleteOne({_id: id})
+        return result
+    }
+
 }

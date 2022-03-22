@@ -1,6 +1,3 @@
-
-//mydellwares ------------------------------------------------------------------
-
 // conection de mysql
 module.exports = class dbconeccion{
     
