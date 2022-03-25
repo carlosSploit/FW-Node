@@ -25,12 +25,12 @@
 
     "apires":{
         "portpru" : 5000,
-        "hosturl" : "192.168.0.7",
+        "hosturl" : "localhost",
         "control_access":{
-            "host": ["*"],
-            "peticcioes": "GET, POST, PUT, DELETE",
-            "hedders": "X-Requested-With,content-type",
-            "credencial": true
+            "origin": ["http://localhost:8000"],
+            "methods": ["GET","HEAD","PUT","PATCH","POST","DELETE","OPTIONS"],
+            "preflightContinue": false,
+            "optionsSuccessStatus": 204
         }
     },
     "apidatkey":{
