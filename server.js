@@ -34,6 +34,6 @@ app.use('/genetic',generico)
 //,verifyToken,
 
 //resever runnig----------------------------------------------------------------
-app.listen(app.get('port'),config.apires.hosturl, () => {
+app.listen(app.get('port'), () => {
     console.log("servidor se encuentra corriendo por el puerto", app.get('port'))
 })
