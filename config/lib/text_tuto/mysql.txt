@@ -15,22 +15,52 @@
 //     }
 // }
 
-METODO DE CONSULTA ASINCRONA
-El metodo asincrono permite votar la respuesta, evitando que se envie un mensaje dentro de esta
-async leer(req,res){
-    let conet = await objconnet.connection(req,res)
-    if(conet == null) return res.send({"error": "error de conexion"})
-    let results = await new Promise((resol, reject) => conet.query('SELECT * FROM `participante` WHERE 1', (err, rows) => {
-        if (err) reject(err);
-        resol(rows);
-    }));
-    return res.send(results);
-}
-
 # Usar mysql en squeleton
 Para poder dar uso al squeleton con mysql, se tendra que descomentar las siguientes lineas de codigo en la configuracion de
-my sql
+los mydellware en la carpeta config/
 
+'''
+    configmysql: mysqlconnet(mysql, dbopccion, config.bd.mysql.tipeOption),
+'''
+
+Por otro lado en si para la creacion de la conexxion de SQL se esta usando una libreria llamada mysqlconnet, el cual recibe 
+unos parametros los cuales son: 
+
+mysql: MySql -> driver
+dbopccion: obcject -> que son las configuraciones de la conexxion que estan en el archivo config.json en el apartado de db - mysql -
+                      single/pool. Tener en cuenta que esta configuracion depende del tiempo que es reflejado en la variable "tipeOption"
+                      el cual si se pone en single, se dara una conexion por predeterminado, y si se da en pool se dera una connexion
+                      de multiconsultas(adecuado para el modo de deployment o cuando se valla a subir a un servidor)
+Obtion : Strig  -> que en la configuracion se ve reflejado por el "config.bd.mysql.tipeOptio" que como ya antes mensionado, contiene el
+                   el tipo de connexion que se requiere, ya sea por pool o sigle
 
 # Creacion de consultas
-Para poder crear una consulta en este squeleton, aremos uso de la clases Connet_mysql.js el cual ya presenta la 
+Para poder crear una consulta en este squeleton, aremos uso de la clases Connet_mysql.js el cual ya presenta la una funcion que realiza la
+connexion y la consulta en si, lo unico que se tiene que realizar, es el llamado y darle uso, esta funcion esta cosntruido de la siguiente forma:
+
+'''
+    // Mesta la consulta basica - con la conexxion por medio de un callback
+    async single_query(req,res, query, parameter, messege = ""){
+        // se crea una promesa, apuntando a la cnexxion - en cual botara el error y la connection
+        let result = await new Promise(async (resol, reject) => await req.getConnection((err, connection)=>{
+            if (err) return reject(err) // en caso que de un error de conexion
+            // -- Inicio de consulta
+            connection.query(query, parameter, (err, rows) => {
+                if (err) return reject(err);
+                if (messege === "") resol(rows);
+                resol(messege);
+            })
+            // -- Fin - Inicio de consulta
+        })).catch((err) => setImmediate(() => { console.log(err.message);})); // si da un error de promesa;
+        // Si no se envia un mensaje , inprime el resultado
+        if (messege === "") return result
+        //  si se envia el mensaje, lo retorna
+        console.log('\x1b[32m',messege)
+        return messege
+    }
+'''
+
+Considerad que el metodo presenta algunos parametros de uso que son los siguiente:
+
+
+
