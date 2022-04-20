@@ -48,8 +48,10 @@ rooutes.post('/uploud', async (req, res) => {
         const resultUrl = await googledrive.generectUrlPublic(resultFile.id);
         return res.status(200).json({
             messege: "imagen insertada correctamente",
-            data: resultUrl.webContentLink,
-            id_field : resultFile.id
+            data:[{
+              url : resultUrl.webContentLink,
+              id : resultFile.id
+            }]
         });
       });
 });

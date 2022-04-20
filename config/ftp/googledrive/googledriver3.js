@@ -3,11 +3,15 @@
 const {google} = require('googleapis');
 const path = require('path');
 const fs = require('fs');
+const config = require('../../key.json');
 // creacion de la ruta
 // const express = require('express')
 // const rooutes = express.Router()
 
-
+const CLIENT_ID = config.googledrive.CLIENT_ID;
+const CLIENT_SECRET = config.googledrive.CLIENT_SECRET;
+const REDIRECT_URI = config.googledrive.REDIRECT_URI;
+const REFRESH_TOKEN = config.googledrive.REFRESH_TOKEN;
 
 const oauth2 = new google.auth.OAuth2(
     CLIENT_ID,
