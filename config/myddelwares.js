@@ -5,6 +5,7 @@ const config = require('./config.json')
 const express = require('express')
 const morgan = require('morgan')
 const cors = require("cors")
+const midellerror = require("./error/midellerror")
 // configuraciones
 const dbopccion = config.bd.mysql[config.bd.mysql.tipeOption]
 
@@ -31,5 +32,6 @@ module.exports = {
     configjson : express.json(), // para que las respuestas se den en json
     configresponse : morgan("dev"), // ayuda a ver las peticiones en log de lo que se envia al servidor
     configcorsdev: cors(cors_dev),
-    configcorsprov :  cors(cors_product)
+    configcorsprov :  cors(cors_product),
+    midellerror : midellerror
 }

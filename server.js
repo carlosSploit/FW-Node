@@ -31,13 +31,14 @@ app.use(middelware.configcorsdev) //configuracion de los cors
 app.get('/', (req, res) => {
     res.send('welcon to my apy')
 })
-//**** routers personalizados */
+//**** routers personalizados - ,verifyToken, */
 app.use('/tokeniser',tokeniser);
 app.use('/genetic',generico);
 // ftp de archivos
 app.use('/ftpgoogle',ftpgoogle); // subir archivos
 app.use('/ftpclodyn',ftpclodyn); // subir archivos
-//,verifyToken,
+// controll de errores
+app.use(middelware.midellerror)
 
 //resever runnig----------------------------------------------------------------
 app.listen(app.get('port'), () => {

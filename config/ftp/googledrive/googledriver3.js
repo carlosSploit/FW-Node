@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=1y0-IfRW114
+// Informacion cobre la creacion del codigo -> https://www.youtube.com/watch?v=1y0-IfRW114
 
 const {google} = require('googleapis');
 const path = require('path');
@@ -82,30 +82,3 @@ module.exports = {
     delect: delect,
     generectUrlPublic: generectUrlPublic
 }
-
-// //readindex
-// rooutes.get("/render/", (req, res) => {
-//     //res.send(req.params.img)
-//     res.render("index.ejs");
-// });
-
-// //insertar
-// rooutes.get('/uploud', async (req, res) => {
-//     const resultFile = await insertar();
-//     const resultUrl = await generectUrlPublic(resultFile.id);
-//     return res.send(resultUrl);
-// });
-
-// //read
-// rooutes.get('/read/:id', async (req, res) => {
-//     const result = await generectUrlPublic(req.params.id);
-//     return res.send(result);
-// });
-
-// //delect
-// rooutes.get('/delect/:id', async (req, res) => {
-//     await delect(req.params.id);
-//     return res.send("Eliminado correctamente");
-// })
-
-// module.exports = rooutes
