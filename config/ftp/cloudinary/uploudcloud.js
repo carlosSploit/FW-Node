@@ -39,7 +39,7 @@ const insertImage = multer({
 //readindex
 rooutes.get("/render/", (req, res) => {
   //res.send(req.params.img)
-  res.render("index.ejs");
+  res.render("index2.ejs");
 });
 
 //insert

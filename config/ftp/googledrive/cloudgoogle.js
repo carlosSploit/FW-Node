@@ -36,7 +36,7 @@ const storageftp = multer.diskStorage({
 //readindex
 rooutes.get("/render", (req, res) => {
     //res.send(req.params.img)
-    res.render("index2.ejs");
+    res.render("index.ejs");
 });
 
 //insertar
