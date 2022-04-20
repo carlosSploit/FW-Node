@@ -3,11 +3,7 @@ const dotenv = require("dotenv")
 
 dotenv.config()
 
-cloud.config({
-    cloud_name: "noticiaslacana",
-    api_key: "521852557526294",
-    api_secret: "sGma_pQqQDATqxrdUKbwkJwZX-E"
-})
+
 
 exports.uploads = (file,folder) =>{
     return new Promise(resolve =>{

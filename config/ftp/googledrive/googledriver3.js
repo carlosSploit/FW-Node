@@ -7,10 +7,7 @@ const fs = require('fs');
 // const express = require('express')
 // const rooutes = express.Router()
 
-const CLIENT_ID = '957715944701-72cre8citaas7s8he599t7rsoh9m624d.apps.googleusercontent.com';
-const CLIENT_SECRET = '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';
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN = '1//04xSPh_BgH0d0CgYIARAAGAQSNwF-L9IrzfBjcF-_lXa5CcCZW5evymLrQLKjNSyKuFJIi-6xZJ6diEgMv4j3DfOxTPK7VR75yZU';
+
 
 const oauth2 = new google.auth.OAuth2(
     CLIENT_ID,
